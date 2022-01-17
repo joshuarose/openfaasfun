@@ -62,3 +62,37 @@ minikube addons enable ingress-dns
 ```bash
 helm upgrade openfaas --install openfaas/openfaas --namespace openfaas --set functionNamespace=openfaas-fn --set basic_auth=true --set ingress.enabled=true
 ```
+
+10.) Start the Minikube tunnel for ingress
+```bash
+minikube tunnel
+```
+
+11.) To test navigate to http://gateway.openfaas.local and login with username: admin and the password you generated in step 4
+
+#### Congrats! you've got your own lambda platform, Now let's get Kanye wisdom
+
+12.) Run the port forward for the CLI
+```bash
+kubectl port-forward -n openfaas svc/gateway 8080:8080 & 
+```
+
+13.) Authenticate OpenFAAS CLI against cluster
+```bash
+faas login --gateway http://localhost:8080 -u admin --password $PASSWORD
+```
+
+14.) Login to docker hub to build against your registry (replace environment variables with credentials or set them in EXPORT)
+```bash
+faas registry-login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+```
+
+15.) Update kanye.yml, replace joshuarose with your docker username
+
+16.) Deploy Kanye to your cluster
+```bash
+faas up -f kanye.yml --build-arg GO111MODULE=on
+```
+
+17.) Invoke Kanye from localhost:8080
+![openfaas screenshot](https://github.com/joshuarose/openfaasfun/img/screenshot.png)
