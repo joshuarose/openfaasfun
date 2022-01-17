@@ -2,7 +2,7 @@
 
 This is just me having fun seeing what it would look like to run microfunctions using [openfaas](https://docs.openfaas.com) in [minikube](https://minikube.sigs.k8s.io/docs/)
 
-###Goal
+### Goal
 I want to deploy a Kanye West micro-function into a k8s cluster that can run anywhere and get some of the same benefits we see from AWS Lambda.
 
 
@@ -95,4 +95,4 @@ faas up -f kanye.yml --build-arg GO111MODULE=on
 ```
 
 17.) Invoke Kanye from localhost:8080
-![openfaas screenshot](https://github.com/joshuarose/openfaasfun/img/screenshot.png)
+![openfaas screenshot](https://github.com/joshuarose/openfaasfun/blob/main/img/screenshot.png)
