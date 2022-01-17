@@ -1,3 +1,5 @@
 template/
 build
 kanye/template/
+credentials/config.json
+.DS_Store
